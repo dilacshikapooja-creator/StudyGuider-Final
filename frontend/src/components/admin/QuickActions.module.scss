@@ -1,0 +1,49 @@
+.wrapper {
+  background: #ffffff;
+  border: 1px solid #e7dcc8;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.wrapper h3 {
+  color: #1d1248;
+  margin-bottom: 16px;
+}
+
+.actions {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 20px;
+
+  button {
+    border: none;
+    padding: 13px 14px;
+    border-radius: 12px;
+    background: #1d1248;
+    color: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.infoCard {
+  background: #efe4cf;
+  border-radius: 16px;
+  padding: 16px;
+
+  h4 {
+    color: #1d1248;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #6f6a86;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}

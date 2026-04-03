@@ -1,0 +1,137 @@
+.header {
+  width: 100%;
+  padding: 24px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  position: relative;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  span {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1d1248;
+  }
+}
+
+.logoIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff5a5f, #f4bf00);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Nav */
+/* 🔥 MAIN NAVBAR (fix here) */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  z-index: 999;
+  background: #efe4cf;
+  padding: 20px 6%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  transition: 0.3s ease;
+}
+
+/* 🔹 NAV LINKS */
+.navbar nav {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    color: #6f6a86;
+    font-weight: 500;
+    transition: 0.3s;
+
+    &:hover {
+      color: #ff5a5f;
+    }
+  }
+}
+
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.loginBtn {
+  color: #1d1248;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.signupBtn {
+  background: #ff5a5f;
+  color: white;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Mobile Menu */
+.menuToggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+
+  span {
+    width: 24px;
+    height: 3px;
+    background: #1d1248;
+    border-radius: 2px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .nav {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #efe4cf;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+    display: none;
+  }
+
+  .nav.active {
+    display: flex;
+  }
+
+  .menuToggle {
+    display: flex;
+  }
+
+  .actions {
+    display: none;
+  }
+}

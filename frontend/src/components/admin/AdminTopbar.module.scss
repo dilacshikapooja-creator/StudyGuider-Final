@@ -1,0 +1,74 @@
+.topbar {
+  background: #ffffff;
+  border: 1px solid #e7dcc8;
+  border-radius: 20px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.searchBox {
+  flex: 1;
+
+  input {
+    width: 100%;
+    border: 1px solid #e7dcc8;
+    border-radius: 12px;
+    padding: 12px 14px;
+    outline: none;
+    font-size: 14px;
+  }
+}
+
+.profileBox {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notification {
+  font-size: 22px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  h4 {
+    margin: 0;
+    color: #1d1248;
+    font-size: 15px;
+  }
+
+  p {
+    margin: 4px 0 0;
+    color: #6f6a86;
+    font-size: 12px;
+  }
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #b7d800;
+  color: #1d1248;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .profileBox {
+    justify-content: space-between;
+  }
+}
