@@ -3,12 +3,14 @@ import styles from "./Sidebar.module.scss";
 
 
 export default function Sidebar() {
+  
+
   return (
     <aside className={styles.sidebar}>
       <h2 className={styles.title}>Study Guider</h2>
-
+       <Link href="/mindmap">
       <button className={styles.newCourseBtn}>Start Your Journey</button>
-
+        </Link> 
       <nav className={styles.nav}>
         <Link href="/dashboard" className={`${styles.navLink} ${styles.active}`}>
           Dashboard
@@ -26,15 +28,6 @@ export default function Sidebar() {
           Plan & Settings
         </Link>
       </nav>
-
-      
-      <div className={styles.profileBox}>
-        <div className={styles.avatar}>N</div>
-        <div>
-          <p className={styles.name}></p>
-          <p className={styles.email}>student@gmail.com</p>
-        </div>
-      </div>
     </aside>
   );
 }

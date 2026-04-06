@@ -149,6 +149,7 @@
 import Link from "next/link";
 import styles from "./dashboard.module.scss";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 type Note = {
   id: number;
@@ -179,6 +180,7 @@ export default function DashboardPage() {
   const [notes, setNotes] = useState<Note[]>([]);
   const [quizzes, setQuizzes] = useState<SavedQuiz[]>([]);
   const [filter, setFilter] = useState<"all" | "summary" | "quiz">("all");
+
 
   useEffect(() => {
     try {
@@ -212,6 +214,7 @@ export default function DashboardPage() {
     "Completed Marketing quiz",
     "Created Commerce mind map",
   ];
+
 
   return (
     <main className={styles.dashboardPage}>

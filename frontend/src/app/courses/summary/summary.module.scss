@@ -147,6 +147,86 @@
   font-size: 16px;
   white-space: pre-line;
 }
+.translateTitle {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.translateActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.langBtn,
+.backBtn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.langBtn:hover,
+.backBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.langBtn:disabled,
+.backBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.tamilBtn {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+.sinhalaBtn {
+  background: #22c55e;
+  color: #ffffff;
+}
+
+.englishBtn {
+  background: #f59e0b;
+  color: #ffffff;
+}
+
+.backBtn {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.translationCard {
+  margin-top: 24px;
+  background: #f5f7fa;
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+
+  h2 {
+    margin-bottom: 12px;
+    font-size: 1.15rem;
+    color: #111827;
+  }
+
+  p {
+    margin: 0;
+    white-space: pre-wrap;
+    line-height: 1.7;
+    color: #374151;
+  }
+}
 
 @media (max-width: 900px) {
   .container {

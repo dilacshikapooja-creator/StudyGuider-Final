@@ -78,6 +78,19 @@ export default function UploadNotesPage() {
           {loading ? "Uploading..." : "Generate Summary"}
         </button>
 
+<div style={{ display: "flex", gap: "10px", marginTop: "20px" }}>
+        
+        {/* 🔙 Back Button */}
+        <button onClick={() => router.back()}>
+          Back
+        </button>
+
+        {/* ➡️ Summarize Button */}
+        <button onClick={() => router.push("/summary")}>
+          Summarize
+        </button>
+
+      </div>
         {message && <p className={styles.message}>{message}</p>}
       </div>
     </main>

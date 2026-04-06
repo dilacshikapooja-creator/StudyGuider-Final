@@ -22,16 +22,6 @@ export default function HomePage() {
 
   return (
     <main className={styles.page}>
-      {/* Top Offer Bar */}
-      <div className={styles.topBar}>
-        <p>
-          Smart AI learning for students — <span>Study better with Study Guider</span>
-        </p>
-        <Link href="/register" className={styles.topBarBtn}>
-          Get Started
-        </Link>
-      </div>
-
       {/* Navbar */}
       <header className={styles.header}>
         <div className={styles.logo}>
@@ -64,8 +54,7 @@ export default function HomePage() {
         <span className={`${styles.shape} ${styles.shapeCircle}`}></span>
         <span className={`${styles.shape} ${styles.shapeDots}`}></span>
 
-        <div className={styles.heroText}>
-          <p className={styles.subTitle}>AI Powered Study Assistant</p>
+        <div className={styles.heroContent}>
 
           <h1>
             It’s Time <br />
