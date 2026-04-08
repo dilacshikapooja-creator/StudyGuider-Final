@@ -1,7 +1,7 @@
 import express from "express";
 import multer from "multer";
 import path from "path";
-import { generateQuizFromPdf } from "../controllers/quizController.js";
+import { generateQuiz } from "../controllers/quizController.js";
 
 const router = express.Router();
 
@@ -32,6 +32,6 @@ const upload = multer({
   },
 });
 
-router.post("/generate", upload.single("pdf"), generateQuizFromPdf);
+router.post("/generate", upload.single("file"), generateQuiz);
 
 export default router;

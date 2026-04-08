@@ -51,20 +51,6 @@ export default function QuizReviewPage() {
       <div style={{ display: "flex", gap: "14px", marginBottom: "30px" }}>
         <button
           type="button"
-          style={{
-            padding: "14px 24px",
-            border: "none",
-            borderRadius: "10px",
-            background: "#f3f4f6",
-            cursor: "pointer",
-            fontSize: "18px",
-          }}
-        >
-          Save Quiz
-        </button>
-
-        <button
-          type="button"
           onClick={() => router.push("/dashboard")}
           style={{
             padding: "14px 24px",
@@ -76,6 +62,22 @@ export default function QuizReviewPage() {
           }}
         >
           Back to Dashboard
+        </button>
+
+        <button
+          type="button"
+          onClick={() => router.push("/notes/short-notes")}
+          style={{
+            padding: "14px 24px",
+            border: "none",
+            borderRadius: "10px",
+            background: "#259e25",
+            cursor: "pointer",
+            fontSize: "18px",
+            color: "#fff",
+          }}
+        >
+          Next
         </button>
       </div>
 
@@ -116,7 +118,9 @@ export default function QuizReviewPage() {
                   <strong>Explanation:</strong> {q.explanation}
                 </p>
               )}
+              
             </div>
+            
           );
         })}
       </div>

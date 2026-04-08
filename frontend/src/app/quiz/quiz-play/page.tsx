@@ -187,6 +187,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Next from "next/dist/server/next";
 
 type QuizQuestion = {
   question: string;
@@ -214,7 +215,8 @@ export default function QuizPlayPage() {
   const [answers, setAnswers] = useState<string[]>([]);
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
-
+  
+  
   useEffect(() => {
     const savedQuiz = localStorage.getItem("quizData");
 
@@ -305,19 +307,20 @@ export default function QuizPlayPage() {
           </button>
 
           <button
-            onClick={() => {
-              localStorage.removeItem("quizData");
-              router.push("/dashboard");
-            }}
-            style={{
-              padding: "12px 20px",
-              borderRadius: "8px",
-              border: "none",
-              cursor: "pointer",
-            }}
-          >
-            Back to Dashboard
-          </button>
+          type="button"
+          onClick={() => router.push("/notes/short-notes")}
+          style={{
+            padding: "14px 24px",
+            border: "none",
+            borderRadius: "10px",
+            background: "#259e25",
+            cursor: "pointer",
+            fontSize: "18px",
+            color: "#fff",
+          }}
+        >
+          Next
+        </button>
         </div>
 
         <div style={{ marginTop: "30px" }}>

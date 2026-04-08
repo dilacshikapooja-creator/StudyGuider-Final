@@ -1,16 +1,23 @@
 import express from "express";
 import {
   getAdminStats,
-  getRecentUsers,
-  getRecentNotes,
+  getAllUsers,
+  deleteUser,
+  getAllNotes,
+  deleteNote,
 } from "../controllers/admin.controller.js";
-import { protect}from "../middlewares/auth.middleware.js";
-import adminMiddleware from "../middlewares/admin.middleware.js";
 
 const router = express.Router();
 
-router.get("/stats", protect, adminMiddleware, getAdminStats);
-router.get("/recent-users", protect, adminMiddleware, getRecentUsers);
-router.get("/recent-notes", protect, adminMiddleware, getRecentNotes);
+// Admin stats
+router.get("/stats", getAdminStats);
+
+// Users
+router.get("/users", getAllUsers);
+router.delete("/users/:id", deleteUser);
+
+// Notes
+router.get("/notes", getAllNotes);
+router.delete("/notes/:id", deleteNote);
 
 export default router;

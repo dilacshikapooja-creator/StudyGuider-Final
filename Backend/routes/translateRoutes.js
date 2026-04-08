@@ -1,8 +1,8 @@
 import express from "express";
-import { translateText } from "../controllers/translateController.js";
+import { translateSummary } from "../controllers/translateController.js";
 
 const router = express.Router();
 
-router.post("/", translateText);
+router.post("/translate-summary", translateSummary);
 
 export default router;

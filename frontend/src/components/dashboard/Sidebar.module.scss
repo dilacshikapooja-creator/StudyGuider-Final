@@ -1,7 +1,7 @@
 .sidebar {
   width: 260px;
   min-height: 100vh;
-  background: #e5ebf1;
+  background: #F5EDD8;
   padding: 24px 18px;
   border-right: 1px solid #e5e7eb;
   display: flex;
@@ -17,7 +17,7 @@
 
 .newCourseBtn {
   width: 100%;
-  background: linear-gradient(135deg, #6d5dfc, #4f46e5);
+  background: linear-gradient(135deg, hsl(120, 87%, 31%), #21ac14);
   color: white;
   border: none;
   border-radius: 14px;

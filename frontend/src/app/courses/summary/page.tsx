@@ -3,7 +3,7 @@
 // import { useState } from "react";
 // import styles from "./summary.module.scss";
 // import { useRouter } from "next/navigation";
-  
+
 // export default function SmartSummariesPage() {
 //   const router = useRouter();
 
@@ -97,7 +97,7 @@
 //     setLoading(false);
 //   }
 // };
-     
+
 
 //   return (
 //     <section className={styles.summaryPage}>
@@ -192,7 +192,7 @@
 //     Back
 //   </button>
 // </div>
-    
+
 
 //         <div className={styles.rightCard}>
 //           <h2>Summary Output</h2>
@@ -277,6 +277,44 @@ export default function SmartSummariesPage() {
       setLoading(false);
     }
   };
+
+  const handleGenerateQuiz = async () => {
+    if (!sourceText) {
+      setMessage("No PDF content found. Please upload PDF first.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setMessage("");
+
+      const res = await fetch("http://localhost:5000/api/quiz/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          text: sourceText,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Failed to generate quiz");
+      }
+
+      localStorage.setItem("quizData", JSON.stringify(data.quiz));
+      localStorage.setItem("quizFileName", sourceTitle || "Uploaded PDF");
+
+      router.push("/quiz/quiz-play");
+    } catch (error: any) {
+      setMessage(error.message || "Something went wrong while generating quiz.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   const translateNow = async (language: string) => {
     try {
@@ -392,6 +430,18 @@ export default function SmartSummariesPage() {
               }}
             >
               Back
+            </button>
+            <button
+              onClick={handleGenerateQuiz}
+              disabled={loading || !sourceText}
+              style={{
+                padding: "10px 20px",
+                borderRadius: "8px",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              {loading ? "Generating..." : "Quiz"}
             </button>
           </div>
         </div>

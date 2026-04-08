@@ -59,6 +59,27 @@ export default function LoginPage() {
   return (
     <main className={styles.page}>
       <section className={styles.card}>
+          <div className={styles.socialButtons}>
+        <button
+          type="button"
+          className={styles.socialBtn}
+          onClick={() =>
+            (window.location.href = "http://localhost:5000/api/auth/google")
+          }
+        >
+          <span className={styles.icon}>G</span>
+          Continue with Google
+        </button>
+
+          <button type="button" className={styles.socialBtn}>
+          <span className={styles.icon}></span>
+          Continue with Apple
+        </button>
+      </div>
+
+      <div className={styles.divider}>
+        <span>OR</span>
+      </div>
         <form onSubmit={handleLogin} className={styles.form}>
           <div className={styles.inputGroup}>
             <label>Email</label>

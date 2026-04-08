@@ -9,7 +9,6 @@ import { FaApple } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 
-
 export default function RegisterPage() {
   const router = useRouter();
 
