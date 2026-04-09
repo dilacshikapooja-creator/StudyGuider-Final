@@ -1,7 +1,9 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import styles from "./quiz-review.module.scss";
 
 type QuizQuestion = {
   question: string;
@@ -21,7 +23,6 @@ type SavedQuiz = {
 };
 
 export default function QuizReviewPage() {
-  const router = useRouter();
   const [quizData, setQuizData] = useState<SavedQuiz | null>(null);
 
   useEffect(() => {
@@ -29,100 +30,100 @@ export default function QuizReviewPage() {
 
     if (savedQuiz) {
       setQuizData(JSON.parse(savedQuiz));
-    } else {
-      router.push("/dashboard");
     }
-  }, [router]);
+  }, []);
 
   if (!quizData) {
-    return <p style={{ padding: "40px" }}>Loading review...</p>;
+    return (
+      <main className={styles.page}>
+        <div className={styles.emptyCard}>
+          <h2>No quiz review found</h2>
+          <p>Please complete a quiz first.</p>
+          <Link href="/dashboard" className={styles.backBtn}>
+            Back to Dashboard
+          </Link>
+        </div>
+      </main>
+    );
   }
 
   return (
-    <main style={{ padding: "40px", background: "#efe4cf", minHeight: "100vh" }}>
-      <h1 style={{ fontSize: "42px", marginBottom: "8px", color: "#0f2544" }}>
-        Quiz Review
-      </h1>
+    <main className={styles.page}>
+      <div className={styles.container}>
+        {/* Header Card */}
+        <div className={styles.headerCard}>
+          <div>
+            <h1>Quiz Review</h1>
+            <p className={styles.subText}>
+              Review your answers and learn from explanations
+            </p>
+          </div>
 
-      <h2 style={{ fontSize: "24px", marginBottom: "30px", color: "#0f2544" }}>
-        Final Score: {quizData.score} / {quizData.totalQuestions}
-      </h2>
+          <div className={styles.scoreBox}>
+            <span className={styles.scoreLabel}>Final Score</span>
+            <h2>
+              {quizData.score} / {quizData.totalQuestions}
+            </h2>
+          </div>
+        </div>
 
-      <div style={{ display: "flex", gap: "14px", marginBottom: "30px" }}>
-        <button
-          type="button"
-          onClick={() => router.push("/dashboard")}
-          style={{
-            padding: "14px 24px",
-            border: "none",
-            borderRadius: "10px",
-            background: "#f3f4f6",
-            cursor: "pointer",
-            fontSize: "18px",
-          }}
-        >
-          Back to Dashboard
-        </button>
+        {/* Action Buttons */}
+        <div className={styles.actions}>
+          <Link href="/dashboard" className={styles.backBtn}>
+            Back to Dashboard
+          </Link>
 
-        <button
-          type="button"
-          onClick={() => router.push("/notes/short-notes")}
-          style={{
-            padding: "14px 24px",
-            border: "none",
-            borderRadius: "10px",
-            background: "#259e25",
-            cursor: "pointer",
-            fontSize: "18px",
-            color: "#fff",
-          }}
-        >
-          Next
-        </button>
-      </div>
+          <Link href="/dashboard" className={styles.nextBtn}>
+            Next
+          </Link>
+        </div>
 
-      <div style={{ marginTop: "20px" }}>
-        {quizData.questions.map((q, index) => {
-          const userAnswer = quizData.userAnswers[index];
-          const isCorrect = userAnswer === q.answer;
+        {/* Questions */}
+        <div className={styles.questionList}>
+          {quizData.questions.map((q, index) => {
+            const userAnswer = quizData.userAnswers[index];
+            const isCorrect =
+              userAnswer?.trim().toLowerCase() === q.answer?.trim().toLowerCase();
 
-          return (
-            <div
-              key={index}
-              style={{
-                border: "1px solid #d1d5db",
-                borderRadius: "14px",
-                padding: "22px",
-                marginBottom: "24px",
-                background: "transparent",
-              }}
-            >
-              <h3 style={{ fontSize: "20px", marginBottom: "12px", color: "#111827" }}>
-                {index + 1}. {q.question}
-              </h3>
+            return (
+              <div key={index} className={styles.questionCard}>
+                <div className={styles.questionTop}>
+                  <h3>
+                    {index + 1}. {q.question}
+                  </h3>
 
-              <p style={{ marginBottom: "6px", fontSize: "16px" }}>
-                <strong>Your Answer:</strong> {userAnswer || "Not answered"}
-              </p>
+                  <span
+                    className={`${styles.badge} ${
+                      isCorrect ? styles.correctBadge : styles.wrongBadge
+                    }`}
+                  >
+                    {isCorrect ? "Correct" : "Wrong"}
+                  </span>
+                </div>
 
-              <p style={{ marginBottom: "6px", fontSize: "16px" }}>
-                <strong>Correct Answer:</strong> {q.answer}
-              </p>
-
-              <p style={{ marginBottom: "6px", fontSize: "16px" }}>
-                <strong>Result:</strong> {isCorrect ? "Correct" : "Wrong"}
-              </p>
-
-              {q.explanation && (
-                <p style={{ fontSize: "16px" }}>
-                  <strong>Explanation:</strong> {q.explanation}
-                </p>
-              )}
-              
-            </div>
-            
-          );
-        })}
+                <div className={styles.answerBlock}>
+                  <p>
+                    <strong>Your Answer:</strong> {userAnswer || "No answer"}
+                  </p>
+                  <p>
+                    <strong>Correct Answer:</strong> {q.answer}
+                  </p>
+                  <p>
+                    <strong>Result:</strong>{" "}
+                    <span className={isCorrect ? styles.correctText : styles.wrongText}>
+                      {isCorrect ? "Correct" : "Wrong"}
+                    </span>
+                  </p>
+                  {q.explanation && (
+                    <p className={styles.explanation}>
+                      <strong>Explanation:</strong> {q.explanation}
+                    </p>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </main>
   );

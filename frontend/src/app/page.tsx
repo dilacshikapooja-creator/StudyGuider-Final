@@ -26,7 +26,7 @@ export default function HomePage() {
       <header className={styles.header}>
         <div className={styles.logo}>
           <div className={styles.logoIcon}>SG</div>
-          <span>Study Guider</span>
+          <span>Study Guide</span>
         </div>
 
         <nav className={styles.nav}>
